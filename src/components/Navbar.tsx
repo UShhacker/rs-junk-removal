@@ -17,6 +17,7 @@ export function Navbar() {
             { to: "/services", label: "Services" },
             { to: "/about", label: "About" },
             { to: "/gallery", label: "Gallery" },
+            { to: "/faq", label: "FAQ" },
             { to: "/contact", label: "Contact" },
           ].map((l) => (
             <Link
