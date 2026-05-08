@@ -81,7 +81,9 @@ function Home() {
 
       {/* WHY */}
       <section className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
-        <img src={sectionWhy} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+        <Parallax speed={0.12} className="absolute inset-[-8%]">
+          <img src={sectionWhy} alt="" loading="lazy" className="w-full h-full object-cover opacity-15" />
+        </Parallax>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/80 to-charcoal" />
         <div className="relative max-w-7xl mx-auto">
           <Reveal>
@@ -165,7 +167,9 @@ function Home() {
 
       {/* PRICING / CALCULATOR */}
       <section className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
-        <img src={sectionPricing} alt="" loading="lazy" className="absolute right-0 top-0 w-1/2 h-full object-cover opacity-10 hidden md:block" />
+        <Parallax speed={0.1} className="absolute right-0 top-[-8%] w-1/2 h-[116%] hidden md:block">
+          <img src={sectionPricing} alt="" loading="lazy" className="w-full h-full object-cover opacity-10" />
+        </Parallax>
         <div className="relative max-w-6xl mx-auto">
           <Reveal>
             <div className="text-xs font-display tracking-wider text-orange mb-2">INSTANT ESTIMATE</div>
