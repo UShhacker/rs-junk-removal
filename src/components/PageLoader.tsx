@@ -21,15 +21,38 @@ export function PageLoader({ onDone }: { onDone: () => void }) {
     return () => cancelAnimationFrame(raf);
   }, [onDone]);
 
+  const done = count >= 100;
+
   return (
-    <div data-testid="page-loader" className="fixed inset-0 z-[100] bg-white flex items-center justify-center">
+    <div
+      data-testid="page-loader"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="page-loader-title"
+      aria-describedby="page-loader-status"
+      className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
+    >
+      <h2 id="page-loader-title" className="sr-only">Loading RS Junk Removal</h2>
       <div className={reducedMotion ? "text-center" : "text-center animate-[scale-in_0.6s_ease-out]"}>
-        <img src={logo} alt="RS Junk Removal" className="h-44 w-44 object-contain mx-auto drop-shadow-[0_0_40px_rgba(232,96,10,0.5)]" />
-      </div>
-      <div className="absolute bottom-6 right-6 font-mono text-white text-xl font-bold bg-orange px-3 py-1.5 shadow-lg tabular-nums">
-        {String(count).padStart(3, "0")}%
+        <img src={logo} alt="" aria-hidden="true" className="h-44 w-44 object-contain mx-auto drop-shadow-[0_0_40px_rgba(232,96,10,0.5)]" />
       </div>
       <div
+        id="page-loader-status"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="absolute bottom-6 right-6 font-mono text-white text-xl font-bold bg-orange px-3 py-1.5 shadow-lg tabular-nums"
+      >
+        <span aria-label={done ? "Loading complete" : `Loading ${count} percent`}>
+          {String(count).padStart(3, "0")}%
+        </span>
+      </div>
+      <div
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={count}
+        aria-label="Page load progress"
         className="absolute bottom-0 left-0 h-1 bg-orange transition-all duration-100"
         style={{ width: `${count}%` }}
       />
