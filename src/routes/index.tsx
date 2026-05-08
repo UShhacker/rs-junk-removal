@@ -80,7 +80,7 @@ function Home() {
       </section>
 
       {/* WHY */}
-      <section className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
+      <section id="why" className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
         <Parallax speed={0.12} className="absolute inset-[-8%]">
           <img src={sectionWhy} alt="" loading="lazy" className="w-full h-full object-cover opacity-15" />
         </Parallax>
@@ -110,7 +110,7 @@ function Home() {
       </section>
 
       {/* COVERAGE */}
-      <section className="relative bg-background py-16 sm:py-20 px-6 overflow-hidden">
+      <section id="coverage" className="relative bg-background py-16 sm:py-20 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-start">
           <Reveal>
             <div>
@@ -187,7 +187,7 @@ function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-background py-16 sm:py-20 px-6 relative overflow-hidden">
+      <section id="reviews" className="bg-background py-16 sm:py-20 px-6 relative overflow-hidden">
         <Parallax speed={-0.15} className="absolute inset-0 opacity-30"><Watermark /></Parallax>
         <div className="relative max-w-7xl mx-auto">
           <Reveal>
@@ -202,7 +202,7 @@ function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-charcoal py-16 sm:py-20 px-6">
+      <section id="faq" className="bg-charcoal py-16 sm:py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-xs font-display tracking-wider text-orange mb-2">QUESTIONS</div>
