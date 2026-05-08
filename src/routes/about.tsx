@@ -18,7 +18,9 @@ function About() {
       <section className="py-20 px-6 stripe-bg">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img src={logo} alt="RS Junk Removal" className="brand-orbit w-full max-w-md mx-auto drop-shadow-[0_0_60px_rgba(232,96,10,0.3)]" />
+            <div className="bg-white p-6 max-w-md mx-auto border-4 border-orange shadow-[0_0_60px_rgba(232,96,10,0.3)]">
+              <img src={logo} alt="RS Junk Removal" className="brand-orbit w-full" />
+            </div>
           </div>
           <div>
             <h1 className="font-display text-6xl md:text-7xl">
