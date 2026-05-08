@@ -9,7 +9,7 @@ export function CookieBanner() {
   return (
     <div className="fixed bottom-4 left-4 right-4 md:left-auto md:max-w-md z-50 bg-charcoal border-2 border-orange p-5 shadow-2xl">
       <p className="text-sm text-foreground">
-        We use cookies to keep RS Junk Removal running smoothly and understand how you use our site. By clicking accept, you're cool with that. Read our{" "}
+        RS Junk Removal uses essential cookies to remember your choices and keep the quote experience running smoothly. We do not sell your information. Read our{" "}
         <a href="/privacy" className="text-orange underline font-bold">Privacy Policy</a>.
       </p>
       <div className="flex gap-2 mt-3">
