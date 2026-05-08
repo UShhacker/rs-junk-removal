@@ -20,11 +20,11 @@ export function PageLoader({ onDone }: { onDone: () => void }) {
   }, [onDone]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center">
+    <div className="fixed inset-0 z-[100] bg-white flex items-center justify-center">
       <div className="text-center animate-[scale-in_0.6s_ease-out]">
         <img src={logo} alt="RS Junk Removal" className="h-44 w-44 object-contain mx-auto drop-shadow-[0_0_40px_rgba(232,96,10,0.5)]" />
       </div>
-      <div className="absolute bottom-6 right-6 font-mono text-orange text-2xl font-bold">
+      <div className="absolute bottom-6 right-6 font-mono text-black text-2xl font-bold">
         {String(count).padStart(2, "0")}
       </div>
       <div
