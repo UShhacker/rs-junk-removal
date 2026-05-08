@@ -53,13 +53,8 @@ function Home() {
           <div className="absolute inset-0 stripe-bg opacity-30" />
         </div>
         <Parallax speed={0.25} className="absolute inset-0"><Watermark /></Parallax>
-        <div className="absolute inset-0 pointer-events-none">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i} className="particle absolute w-2 h-2 bg-orange" style={{ left: `${15 + i * 22}%`, animationDelay: `${i * 1.5}s` }} />
-          ))}
-        </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+        <div data-testid="hero-orbit" className="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl leading-[0.85] animate-[fade-in_0.6s_ease-out]">
               YOU CALL.
