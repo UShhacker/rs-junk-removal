@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const NAV_LINKS = [
