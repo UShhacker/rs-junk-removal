@@ -18,7 +18,7 @@ function About() {
       <section className="py-20 px-6 stripe-bg">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img src={logo} alt="RS Junk Removal" className="w-full max-w-md mx-auto animate-[float-up_0s] drop-shadow-[0_0_60px_rgba(232,96,10,0.3)]" style={{ animation: "spin 20s linear infinite" }} />
+            <img src={logo} alt="RS Junk Removal" className="brand-orbit w-full max-w-md mx-auto drop-shadow-[0_0_60px_rgba(232,96,10,0.3)]" />
           </div>
           <div>
             <h1 className="font-display text-6xl md:text-7xl">

@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   Outlet,
   createRootRouteWithContext,
@@ -60,11 +61,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "RS Junk Removal — You Call. We Haul." },
       { property: "og:description", content: "Same-day junk removal in Miami Beach, FL." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "RS Junk Removal" },
+      { name: "theme-color", content: "#e8600a" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
+      { rel: "shortcut icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -84,10 +88,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RouteFade({ children }: { children: React.ReactNode }) {
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const reducedMotion = useReducedMotion();
   return (
-    <div key={path} className="animate-[fade-in_0.5s_ease-out]">
-      {children}
-    </div>
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={path}
+        initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={reducedMotion ? { opacity: 1 } : { opacity: 0, y: -12 }}
+        transition={{ duration: reducedMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }
 

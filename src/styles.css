@@ -64,7 +64,7 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { overflow-x: hidden; }
+  html, body, #root { overflow-x: hidden; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -107,10 +107,23 @@
 }
 .particle { animation: float-up 8s linear infinite; }
 
+.brand-orbit { animation: brand-orbit 20s linear infinite; }
+
+@keyframes brand-orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .brand-orbit,
+  .particle {
+    animation: none !important;
   }
 }

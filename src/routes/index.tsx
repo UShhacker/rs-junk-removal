@@ -53,13 +53,8 @@ function Home() {
           <div className="absolute inset-0 stripe-bg opacity-30" />
         </div>
         <Parallax speed={0.25} className="absolute inset-0"><Watermark /></Parallax>
-        <div className="absolute inset-0 pointer-events-none">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i} className="particle absolute w-2 h-2 bg-orange" style={{ left: `${15 + i * 22}%`, animationDelay: `${i * 1.5}s` }} />
-          ))}
-        </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+        <div data-testid="hero-orbit" className="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl leading-[0.85] animate-[fade-in_0.6s_ease-out]">
               YOU CALL.
@@ -86,7 +81,9 @@ function Home() {
 
       {/* WHY */}
       <section className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
-        <img src={sectionWhy} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+        <Parallax speed={0.12} className="absolute inset-[-8%]">
+          <img src={sectionWhy} alt="" loading="lazy" className="w-full h-full object-cover opacity-15" />
+        </Parallax>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal via-charcoal/80 to-charcoal" />
         <div className="relative max-w-7xl mx-auto">
           <Reveal>
@@ -170,7 +167,9 @@ function Home() {
 
       {/* PRICING / CALCULATOR */}
       <section className="relative bg-charcoal py-16 sm:py-20 px-6 overflow-hidden">
-        <img src={sectionPricing} alt="" loading="lazy" className="absolute right-0 top-0 w-1/2 h-full object-cover opacity-10 hidden md:block" />
+        <Parallax speed={0.1} className="absolute right-0 top-[-8%] w-1/2 h-[116%] hidden md:block">
+          <img src={sectionPricing} alt="" loading="lazy" className="w-full h-full object-cover opacity-10" />
+        </Parallax>
         <div className="relative max-w-6xl mx-auto">
           <Reveal>
             <div className="text-xs font-display tracking-wider text-orange mb-2">INSTANT ESTIMATE</div>
