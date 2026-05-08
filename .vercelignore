@@ -1,0 +1,13 @@
+tests
+tests/**
+.git
+.gitignore
+README.md
+*.md
+node_modules/.cache
+.env*.local
+.DS_Store
+.turbo
+.next
+dist
+.output
