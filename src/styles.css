@@ -64,7 +64,9 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { scroll-padding-top: 5rem; scroll-behavior: smooth; }
   html, body, #root { overflow-x: hidden; }
+  section[id] { scroll-margin-top: 5rem; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
