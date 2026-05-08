@@ -55,7 +55,7 @@ export function Navbar() {
         </button>
       </div>
       {open && (
-        <nav data-testid="navbar-overlay" className="md:hidden border-t border-border bg-background px-4 py-4 font-display font-bold shadow-2xl">
+        <nav data-testid="navbar-overlay" className="md:hidden border-t border-border bg-white px-4 py-4 font-display font-bold shadow-2xl text-black">
           <div className="grid gap-2">
             {NAV_LINKS.map((l) => (
               <Link
@@ -69,8 +69,8 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
-            <a href="tel:7865728486" className="mt-2 bg-orange text-background px-3 py-3 text-center font-extrabold">
-              Call 786-572-8486
+            <a href="tel:7865728486" className="mt-2 inline-flex items-center justify-center gap-2 bg-orange text-white px-3 py-3 text-center font-extrabold">
+              <Phone className="h-5 w-5" /> Call Now
             </a>
           </div>
         </nav>
