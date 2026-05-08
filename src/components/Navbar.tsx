@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
@@ -12,8 +12,45 @@ const NAV_LINKS = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const SECTION_FOR_PATH: Record<string, string> = {
+  "/services": "why",
+  "/gallery": "coverage",
+  "/faq": "faq",
+};
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const location = useLocation();
+  const onHome = location.pathname === "/";
+
+  useEffect(() => {
+    if (!onHome) {
+      setActiveSection(null);
+      return;
+    }
+    const ids = ["why", "coverage", "reviews", "faq"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [onHome, location.pathname]);
+
+  const isLinkActive = (to: string) => {
+    if (!onHome) return false;
+    const section = SECTION_FOR_PATH[to];
+    return section ? activeSection === section : false;
+  };
 
   return (
     <header data-testid="navbar" className="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-b-2 border-orange">
@@ -25,17 +62,21 @@ export function Navbar() {
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-4 font-display font-bold text-base text-black">
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ className: "text-orange" }}
-              className="px-2 py-1 hover:text-orange transition-colors uppercase tracking-wider"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((l) => {
+            const spyActive = isLinkActive(l.to);
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{ className: "text-orange" }}
+                aria-current={spyActive ? "true" : undefined}
+                className={`px-2 py-1 hover:text-orange transition-colors uppercase tracking-wider ${spyActive ? "text-orange" : ""}`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
           <a
             href="tel:7865728486"
             aria-label="Call 786-572-8486"
