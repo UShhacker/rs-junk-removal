@@ -9,7 +9,7 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Get a free junk removal quote in Miami Beach. Call 786-572-8486 or send a message." },
     ],
   }),
-  component: Contact;
+  component: Contact,
 });
 
 const AREAS = ["Miami Beach", "Coral Gables", "Hialeah", "Doral", "Aventura", "Brickell", "Wynwood", "Kendall", "Homestead", "South Beach"];
