@@ -13,6 +13,11 @@ export function Reveal({ children, className = "" }: { children: React.ReactNode
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+      return;
+    }
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
