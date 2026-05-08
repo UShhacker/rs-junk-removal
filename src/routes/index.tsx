@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import logo from "@/assets/logo.png";
 import { Reveal, Watermark } from "@/components/Bits";
+import { Parallax } from "@/components/Parallax";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,7 +18,7 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative min-h-[calc(100vh-4rem)] stripe-bg overflow-hidden diagonal-cut-b">
-        <Watermark />
+        <Parallax speed={0.25} className="absolute inset-0"><Watermark /></Parallax>
         {/* particles */}
         <div className="absolute inset-0 pointer-events-none">
           {[0, 1, 2, 3].map((i) => (
@@ -106,6 +107,34 @@ function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="bg-background py-20 px-6 relative overflow-hidden">
+        <Parallax speed={-0.15} className="absolute inset-0 opacity-30"><Watermark /></Parallax>
+        <div className="relative max-w-7xl mx-auto">
+          <Reveal>
+            <h2 className="font-display text-5xl md:text-6xl mb-12">
+              Real <span className="text-orange">Reviews</span>
+            </h2>
+          </Reveal>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: "Carlos M.", area: "Brickell", text: "Showed up two hours after I called. Cleared my whole garage. Unreal service." },
+              { name: "Janelle R.", area: "Coral Gables", text: "Honest pricing, no nonsense. Hauled an old sofa and three appliances same day." },
+              { name: "Diego S.", area: "Hialeah", text: "Cleaned out my dad's storage unit for me. Super respectful crew. Highly recommend." },
+            ].map((t) => (
+              <Reveal key={t.name}>
+                <div className="bg-charcoal border-t-4 border-orange p-6 h-full">
+                  <div className="text-orange text-5xl font-display font-black leading-none">"</div>
+                  <p className="text-muted-foreground italic">{t.text}</p>
+                  <div className="mt-4 text-orange tracking-widest">★★★★★</div>
+                  <div className="font-display mt-2">{t.name} <span className="text-muted-foreground text-sm">— {t.area}</span></div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative bg-background py-24 px-6 text-center stripe-bg">
         <Reveal>
@@ -113,9 +142,14 @@ function Home() {
             Got Junk? <span className="text-orange">We Got This.</span>
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">Tap below for a free quote in minutes.</p>
-          <Link to="/contact" className="inline-block mt-8 bg-orange text-background px-10 py-5 font-display font-extrabold text-xl hover:bg-orange-bright transition">
-            Get My Free Quote
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link to="/contact" className="bg-orange text-background px-10 py-5 font-display font-extrabold text-xl hover:bg-orange-bright transition">
+              Get My Free Quote
+            </Link>
+            <Link to="/faq" className="border-2 border-foreground px-10 py-5 font-display font-extrabold text-xl hover:bg-foreground hover:text-background transition">
+              See FAQs
+            </Link>
+          </div>
         </Reveal>
       </section>
     </>
